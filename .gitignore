@@ -1,0 +1,30 @@
+# Binários compilados
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.nuget
+# Arquivos temporários do Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.cache
+*.VC.db
+# Configurações do Rider e Resharper
+.idea/
+*.sln.iml
+# Arquivos de log e cache
+logs/
+*.log
+*.cache
+*.pid
+*.swp
+# Dependências geradas
+node_modules/
+packages/
+project.lock.json
+# Configurações específicas do sistema operacional
+Thumbs.db
+.DS_Store
