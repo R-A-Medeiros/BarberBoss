@@ -4,4 +4,5 @@ namespace BarberBoss.Domain.Repositories.Invoices;
 public interface IInvoicesRepository
 {
     Task<List<Invoice>> GetAll();
+    Task Add(Invoice invoice);
 }
