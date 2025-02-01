@@ -1,10 +1,24 @@
-﻿using BarberBoss.Communication.Responses;
+﻿using AutoMapper;
+using BarberBoss.Communication.Responses;
+using BarberBoss.Domain.Repositories.Invoices;
 
 namespace BarberBoss.Application.UseCases.Invoices.GetAll;
 public class GetAllInvoiceUseCase : IGetAllInvoiceUseCase
 {
-    public Task<ResponseInvoiceJson> Execute()
+    private readonly IInvoicesRepository _invoicesRepository;
+    private readonly IMapper _mapper;
+    public GetAllInvoiceUseCase(IInvoicesRepository repository, IMapper mapper)
     {
-        return null;
+        _invoicesRepository = repository;
+        _mapper = mapper;
+    }
+    public async Task<ResponseInvoicesJson> Execute()
+    {
+        var result = await _invoicesRepository.GetAll();
+
+        return new ResponseInvoicesJson
+        {
+            Invoice = _mapper.Map<List<ResponseShortInvoice>>(result)
+        };
     }
 }

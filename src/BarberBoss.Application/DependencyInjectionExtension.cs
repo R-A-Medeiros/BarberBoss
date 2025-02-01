@@ -1,4 +1,5 @@
-﻿using BarberBoss.Application.UseCases.Invoices.GetAll;
+﻿using BarberBoss.Application.Mapper;
+using BarberBoss.Application.UseCases.Invoices.GetAll;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BarberBoss.Application
@@ -13,7 +14,7 @@ namespace BarberBoss.Application
 
         private static void AddAutoMapper(IServiceCollection services)
         {
-            //  services.AddAutoMapper(typeof(AutoMapping));
+              services.AddAutoMapper(typeof(AutoMapping));
         }
 
         private static void AddUseCases(IServiceCollection services)
