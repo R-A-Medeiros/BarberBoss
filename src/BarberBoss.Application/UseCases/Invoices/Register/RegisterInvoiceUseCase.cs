@@ -4,6 +4,7 @@ using BarberBoss.Communication.Responses;
 using BarberBoss.Domain.Entities;
 using BarberBoss.Domain.Repositories;
 using BarberBoss.Domain.Repositories.Invoices;
+using BarberBoss.Exception.ExceptionBase;
 
 namespace BarberBoss.Application.UseCases.Invoices.Register;
 public class RegisterInvoiceUseCase : IRegisterInvoiceUseCase
@@ -39,7 +40,8 @@ public class RegisterInvoiceUseCase : IRegisterInvoiceUseCase
 
         if (result.IsValid == false)
         {
-            throw new ArgumentException("Parametros invalidos");
+            var errorMessages = result.Errors.Select(f => f.ErrorMessage).ToList();
+            throw new ErrorOnValidationException(errorMessages);
         }
     }
 }

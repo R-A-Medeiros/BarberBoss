@@ -1,4 +1,5 @@
 
+using BarberBoss.API.Filters;
 using BarberBoss.Application;
 using BarberBoss.Infra;
 
@@ -19,6 +20,9 @@ public class Program
 
         builder.Services.AddInfrastructure(builder.Configuration);
         builder.Services.AddApplication();
+
+        // add ExceptioFilter
+        builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
 
         var app = builder.Build();
 
